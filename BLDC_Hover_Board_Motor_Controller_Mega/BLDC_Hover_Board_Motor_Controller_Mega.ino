@@ -7,6 +7,8 @@ int m1_EL_Start_Stop=5;  //EL
 int m1_Signal_hall=3;   // Signal - Hall sensor
 int m1_ZF_Direction=4;  // ZF 
 int m1_VR_speed=2;    //VR 
+int analogPin = A3;   // analog pin 3
+int val = 0;
 //#######################################
 //#######################################
 int pos=0;int steps=0;int speed1=0;
@@ -78,6 +80,9 @@ void wheelMoveBackward(){
 
 void loop() {
 
+  val = analogRead(analogPin);  // read the input pin
+  Serial.println(val);          // debug value
+  
   if (Serial.available()>0) {
     String command=Serial.readString();
     
